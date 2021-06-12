@@ -14,6 +14,18 @@ class Node():
     pass
 
 
+class NULL(Node):
+    def __init__(self):
+        self.n
+
+    def translate(self):
+        global text
+        id = increaseCount()
+        text += id + 'null\n'
+
+        return id
+
+
 class intDecl(Node):
     def __init__(self, name):
         self.name = name
@@ -278,7 +290,18 @@ class expression3(Node):
         return id
 
 
-class expression3(Node):
+class expression4(Node):
+    def __init__(self, name):
+        self.name = name
+
+    def translate(self):
+        global text
+        id = increaseCount()
+
+        return id
+
+
+class expression5(Node):
     def __init__(self, name):
         self.name = name
 
