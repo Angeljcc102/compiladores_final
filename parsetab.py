@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'rightASSIGNleftORleftANDleftEQUALSNEleftGTLTGELEleftPLUSMINUSleftTIMESDIVIDEEXPleftLPARENRPARENleftLBRACERBRACEAND ASSIGN BOOL DIVIDE DO ELIF ELSE EQUALS EXP FALSE FLOAT FOR GE GT ID IF INT LBRACE LE LPAREN LT MINUS NE OR PLUS RBRACE RPAREN SEMICOLON STRING TIMES TRUE WHILEintDecl : INT intAssignmentList floatDecl : FLOAT floatAssignmentList stringDecl : STRING stringAssignmentList intAssignmentList : ID ASSIGN INT SEMICOLONfloatAssignmentList : ID ASSIGN FLOAT SEMICOLONstringAssignmentList : ID ASSIGN STRING SEMICOLONidentList : ID statement : IF LPAREN condition RPAREN LBRACE statement RBRACEstatement : WHILE LPAREN condition RPAREN LBRACE statement RBRACEstatement : DO LBRACE statement RBRACE WHILE LPAREN condition RPAREN SEMICOLONstatement : IF LPAREN condition RPAREN LBRACE statement RBRACE ELSE LBRACE statement RBRACEstatement : emptystatement : statementcondition : expression relation expressionrelation : ASSIGNrelation : EQUALS relation : NErelation : GTrelation : LTrelation : GErelation : LEexpression : termsexpression : addOp termsexpression : expression addOp termsaddOp : PLUSaddOp : MINUSmultOp : TIMESmultOp : DIVIDEterms : factorterms : terms addOp factorterms : terms multOp factorfactor : IDfactor : INTfactor : FLOATfactor : STRINGfactor : LPAREN expression RPARENempty :'
+_lr_signature = 'rightASSIGNleftORleftANDleftEQUALSNEleftGTLTGELEleftPLUSMINUSleftTIMESDIVIDEEXPleftLPARENRPARENleftLBRACERBRACEAND ASSIGN BOOL DIVIDE DO ELIF ELSE EQUALS EXP FALSE FLOAT FOR GE GT ID IF INT LBRACE LE LPAREN LT MINUS NE OR PLUS RBRACE RPAREN SEMICOLON STRING TIMES TRUE WHILEintAssignmentList : ID ASSIGN INT SEMICOLONfloatAssignmentList : ID ASSIGN FLOAT SEMICOLONstringAssignmentList : ID ASSIGN STRING SEMICOLONidentList : ID statement : IF LPAREN condition RPAREN LBRACE statement RBRACEstatement : WHILE LPAREN condition RPAREN LBRACE statement RBRACEstatement : DO LBRACE statement RBRACE WHILE LPAREN condition RPAREN SEMICOLONstatement : IF LPAREN condition RPAREN LBRACE statement RBRACE ELSE LBRACE statement RBRACEstatement : emptystatement : statementcondition : expression relation expressionrelation : ASSIGNrelation : EQUALS relation : NErelation : GTrelation : LTrelation : GErelation : LEexpression : termsexpression : addOp termsexpression : multOp termsexpression : expression addOp termsexpression : expression multOp termsaddOp : PLUSaddOp : MINUSmultOp : TIMESmultOp : DIVIDEterms : factorterms : terms addOp factorterms : terms multOp factorfactor : IDfactor : INTfactor : FLOATfactor : STRINGfactor : LPAREN expression RPARENempty :'
     
-_lr_action_items = {'INT':([0,5,],[2,6,]),'$end':([1,3,7,],[0,-1,-4,]),'ID':([2,],[4,]),'ASSIGN':([4,],[5,]),'SEMICOLON':([6,],[7,]),}
+_lr_action_items = {'ID':([0,],[2,]),'$end':([1,5,],[0,-1,]),'ASSIGN':([2,],[3,]),'INT':([3,],[4,]),'SEMICOLON':([4,],[5,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'intDecl':([0,],[1,]),'intAssignmentList':([2,],[3,]),}
+_lr_goto_items = {'intAssignmentList':([0,],[1,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -26,42 +26,41 @@ for _k, _v in _lr_goto_items.items():
        _lr_goto[_x][_k] = _y
 del _lr_goto_items
 _lr_productions = [
-  ("S' -> intDecl","S'",1,None,None,None),
-  ('intDecl -> INT intAssignmentList','intDecl',2,'p_intDecl','sintactico.py',23),
-  ('floatDecl -> FLOAT floatAssignmentList','floatDecl',2,'p_floatDecl','sintactico.py',28),
-  ('stringDecl -> STRING stringAssignmentList','stringDecl',2,'p_stringDecl','sintactico.py',33),
-  ('intAssignmentList -> ID ASSIGN INT SEMICOLON','intAssignmentList',4,'p_intAssignmentList','sintactico.py',38),
-  ('floatAssignmentList -> ID ASSIGN FLOAT SEMICOLON','floatAssignmentList',4,'p_floatAssignmentList','sintactico.py',43),
-  ('stringAssignmentList -> ID ASSIGN STRING SEMICOLON','stringAssignmentList',4,'p_stringAssignmentList','sintactico.py',48),
-  ('identList -> ID','identList',1,'p_identList','sintactico.py',52),
-  ('statement -> IF LPAREN condition RPAREN LBRACE statement RBRACE','statement',7,'p_statement1','sintactico.py',57),
-  ('statement -> WHILE LPAREN condition RPAREN LBRACE statement RBRACE','statement',7,'p_statement2','sintactico.py',62),
-  ('statement -> DO LBRACE statement RBRACE WHILE LPAREN condition RPAREN SEMICOLON','statement',9,'p_statement3','sintactico.py',67),
-  ('statement -> IF LPAREN condition RPAREN LBRACE statement RBRACE ELSE LBRACE statement RBRACE','statement',11,'p_statement4','sintactico.py',79),
-  ('statement -> empty','statement',1,'p_statement5','sintactico.py',84),
-  ('statement -> statement','statement',1,'p_statementList','sintactico.py',89),
-  ('condition -> expression relation expression','condition',3,'p_condition','sintactico.py',94),
-  ('relation -> ASSIGN','relation',1,'p_relation1','sintactico.py',99),
-  ('relation -> EQUALS','relation',1,'p_relation2','sintactico.py',104),
-  ('relation -> NE','relation',1,'p_relation3','sintactico.py',109),
-  ('relation -> GT','relation',1,'p_relation4','sintactico.py',114),
-  ('relation -> LT','relation',1,'p_relation5','sintactico.py',119),
-  ('relation -> GE','relation',1,'p_relation6','sintactico.py',124),
-  ('relation -> LE','relation',1,'p_relation7','sintactico.py',129),
-  ('expression -> terms','expression',1,'p_expression1','sintactico.py',134),
-  ('expression -> addOp terms','expression',2,'p_expression2','sintactico.py',139),
-  ('expression -> expression addOp terms','expression',3,'p_expression3','sintactico.py',149),
-  ('addOp -> PLUS','addOp',1,'p_addOp1','sintactico.py',154),
-  ('addOp -> MINUS','addOp',1,'p_addOp2','sintactico.py',159),
-  ('multOp -> TIMES','multOp',1,'p_multOp1','sintactico.py',164),
-  ('multOp -> DIVIDE','multOp',1,'p_multOp2','sintactico.py',169),
-  ('terms -> factor','terms',1,'p_terms1','sintactico.py',174),
-  ('terms -> terms addOp factor','terms',3,'p_terms2','sintactico.py',179),
-  ('terms -> terms multOp factor','terms',3,'p_terms3','sintactico.py',184),
-  ('factor -> ID','factor',1,'p_factor1','sintactico.py',189),
-  ('factor -> INT','factor',1,'p_factor2','sintactico.py',194),
-  ('factor -> FLOAT','factor',1,'p_factor3','sintactico.py',199),
-  ('factor -> STRING','factor',1,'p_factor4','sintactico.py',204),
-  ('factor -> LPAREN expression RPAREN','factor',3,'p_factor5','sintactico.py',209),
-  ('empty -> <empty>','empty',0,'p_empty','sintactico.py',214),
+  ("S' -> intAssignmentList","S'",1,None,None,None),
+  ('intAssignmentList -> ID ASSIGN INT SEMICOLON','intAssignmentList',4,'p_intAssignmentList','sintactico.py',44),
+  ('floatAssignmentList -> ID ASSIGN FLOAT SEMICOLON','floatAssignmentList',4,'p_floatAssignmentList','sintactico.py',51),
+  ('stringAssignmentList -> ID ASSIGN STRING SEMICOLON','stringAssignmentList',4,'p_stringAssignmentList','sintactico.py',58),
+  ('identList -> ID','identList',1,'p_identList','sintactico.py',65),
+  ('statement -> IF LPAREN condition RPAREN LBRACE statement RBRACE','statement',7,'p_statement1','sintactico.py',71),
+  ('statement -> WHILE LPAREN condition RPAREN LBRACE statement RBRACE','statement',7,'p_statement2','sintactico.py',77),
+  ('statement -> DO LBRACE statement RBRACE WHILE LPAREN condition RPAREN SEMICOLON','statement',9,'p_statement3','sintactico.py',83),
+  ('statement -> IF LPAREN condition RPAREN LBRACE statement RBRACE ELSE LBRACE statement RBRACE','statement',11,'p_statement4','sintactico.py',96),
+  ('statement -> empty','statement',1,'p_statementEmpty','sintactico.py',102),
+  ('statement -> statement','statement',1,'p_statementList','sintactico.py',108),
+  ('condition -> expression relation expression','condition',3,'p_condition','sintactico.py',114),
+  ('relation -> ASSIGN','relation',1,'p_relation1','sintactico.py',120),
+  ('relation -> EQUALS','relation',1,'p_relation2','sintactico.py',126),
+  ('relation -> NE','relation',1,'p_relation3','sintactico.py',132),
+  ('relation -> GT','relation',1,'p_relation4','sintactico.py',138),
+  ('relation -> LT','relation',1,'p_relation5','sintactico.py',144),
+  ('relation -> GE','relation',1,'p_relation6','sintactico.py',150),
+  ('relation -> LE','relation',1,'p_relation7','sintactico.py',156),
+  ('expression -> terms','expression',1,'p_expression1','sintactico.py',162),
+  ('expression -> addOp terms','expression',2,'p_expression2','sintactico.py',168),
+  ('expression -> multOp terms','expression',2,'p_expression3','sintactico.py',174),
+  ('expression -> expression addOp terms','expression',3,'p_expression4','sintactico.py',180),
+  ('expression -> expression multOp terms','expression',3,'p_expression5','sintactico.py',186),
+  ('addOp -> PLUS','addOp',1,'p_addOp1','sintactico.py',192),
+  ('addOp -> MINUS','addOp',1,'p_addOp2','sintactico.py',198),
+  ('multOp -> TIMES','multOp',1,'p_multOp1','sintactico.py',204),
+  ('multOp -> DIVIDE','multOp',1,'p_multOp2','sintactico.py',210),
+  ('terms -> factor','terms',1,'p_terms1','sintactico.py',216),
+  ('terms -> terms addOp factor','terms',3,'p_terms2','sintactico.py',222),
+  ('terms -> terms multOp factor','terms',3,'p_terms3','sintactico.py',228),
+  ('factor -> ID','factor',1,'p_factor1','sintactico.py',234),
+  ('factor -> INT','factor',1,'p_factor2','sintactico.py',240),
+  ('factor -> FLOAT','factor',1,'p_factor3','sintactico.py',246),
+  ('factor -> STRING','factor',1,'p_factor4','sintactico.py',252),
+  ('factor -> LPAREN expression RPAREN','factor',3,'p_factor5','sintactico.py',258),
+  ('empty -> <empty>','empty',0,'p_empty','sintactico.py',264),
 ]

@@ -20,23 +20,26 @@ precedence = (
     ('left', 'LBRACE', 'RBRACE'),
 )
 
-
+"""
 def p_intDecl(p):
-    '''intDecl : INT intAssignmentList '''
+    '''intDecl: INT intAssignmentList '''
     print("intDecl")
     p[0] = intDecl(INT(p[1]), intAssignmentList(p[2]), "intDecl")
 
 
 def p_floatDecl(p):
-    '''floatDecl : FLOAT floatAssignmentList '''
+    '''floatDecl: FLOAT floatAssignmentList '''
     print("floatDecl")
     p[0] = floatDecl(FLOAT(p[1]), floatAssignmentList(p[2]), "floatDecl")
 
+"""
 
+"""
 def p_stringDecl(p):
-    '''stringDecl : STRING stringAssignmentList '''
+    '''stringDecl: STRING stringAssignmentList'''
     print("stringDecl")
     p[0] = stringDecl(STRING(p[1]), stringAssignmentList(p[2]), "stringDecl")
+"""
 
 
 def p_intAssignmentList(p):
@@ -82,13 +85,6 @@ def p_statement3(p):
     '''statement : DO LBRACE statement RBRACE WHILE LPAREN condition RPAREN SEMICOLON'''
     print("statement3")
     p[0] = statement3(p[3], p[7], "statement3")
-
-
-"""
-for statement
-def p_statement3(p):
-    '''statement: FOR LPAREN intDecl SEMICOLON condition SEMICOLON
-"""
 
 
 def p_statement4(p):
@@ -269,8 +265,6 @@ def p_error(p):
     print("error en la linea" + str(p.lineno))
 
 
-parser = yacc.yacc()
-
 route = sys.argv[-1]
 
 if len(sys.argv) != 2:
@@ -281,14 +275,17 @@ filename = codecs.open(route, "r", "utf-8")
 texto = filename.read()
 filename.close()
 
-resultados = parser.parse(texto)
+yacc.yacc()
+resultados = yacc.parse(texto)
 
-#resultados.printer(" ")
-# print(result.translate())
+print(resultados)
 
+"""
+newfile = codecs.open("tree.txt", "w")
 
-newfile = codecs.open("tree.txt", "w", "utf-8")
-newfile.wirte(resultados.translate())
+newfile.write(resultados)
+
 newfile.close()
 
 print(resultados)
+"""
