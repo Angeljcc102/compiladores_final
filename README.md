@@ -21,3 +21,5 @@ genera un archivo parser.out
 # Analizador semantico
 
 - Version escrita, errores de implementación -
+
+** Version 0.8 **
