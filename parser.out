@@ -1,0 +1,169 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    AND
+    BOOL
+    ELIF
+    EXP
+    FALSE
+    FOR
+    OR
+    TRUE
+
+Grammar
+
+Rule 0     S' -> intDecl
+Rule 1     intDecl -> INT intAssignmentList
+Rule 2     floatDecl -> FLOAT floatAssignmentList
+Rule 3     stringDecl -> STRING stringAssignmentList
+Rule 4     intAssignmentList -> ID ASSIGN INT SEMICOLON
+Rule 5     floatAssignmentList -> ID ASSIGN FLOAT SEMICOLON
+Rule 6     stringAssignmentList -> ID ASSIGN STRING SEMICOLON
+Rule 7     identList -> ID
+Rule 8     statement -> IF LPAREN condition RPAREN LBRACE statement RBRACE
+Rule 9     statement -> WHILE LPAREN condition RPAREN LBRACE statement RBRACE
+Rule 10    statement -> DO LBRACE statement RBRACE WHILE LPAREN condition RPAREN SEMICOLON
+Rule 11    statement -> IF LPAREN condition RPAREN LBRACE statement RBRACE ELSE LBRACE statement RBRACE
+Rule 12    statement -> empty
+Rule 13    statement -> statement
+Rule 14    condition -> expression relation expression
+Rule 15    relation -> ASSIGN
+Rule 16    relation -> EQUALS
+Rule 17    relation -> NE
+Rule 18    relation -> GT
+Rule 19    relation -> LT
+Rule 20    relation -> GE
+Rule 21    relation -> LE
+Rule 22    expression -> terms
+Rule 23    expression -> addOp terms
+Rule 24    expression -> expression addOp terms
+Rule 25    addOp -> PLUS
+Rule 26    addOp -> MINUS
+Rule 27    multOp -> TIMES
+Rule 28    multOp -> DIVIDE
+Rule 29    terms -> factor
+Rule 30    terms -> terms addOp factor
+Rule 31    terms -> terms multOp factor
+Rule 32    factor -> ID
+Rule 33    factor -> INT
+Rule 34    factor -> FLOAT
+Rule 35    factor -> STRING
+Rule 36    factor -> LPAREN expression RPAREN
+Rule 37    empty -> <empty>
+
+Terminals, with rules where they appear
+
+AND                  : 
+ASSIGN               : 4 5 6 15
+BOOL                 : 
+DIVIDE               : 28
+DO                   : 10
+ELIF                 : 
+ELSE                 : 11
+EQUALS               : 16
+EXP                  : 
+FALSE                : 
+FLOAT                : 2 5 34
+FOR                  : 
+GE                   : 20
+GT                   : 18
+ID                   : 4 5 6 7 32
+IF                   : 8 11
+INT                  : 1 4 33
+LBRACE               : 8 9 10 11 11
+LE                   : 21
+LPAREN               : 8 9 10 11 36
+LT                   : 19
+MINUS                : 26
+NE                   : 17
+OR                   : 
+PLUS                 : 25
+RBRACE               : 8 9 10 11 11
+RPAREN               : 8 9 10 11 36
+SEMICOLON            : 4 5 6 10
+STRING               : 3 6 35
+TIMES                : 27
+TRUE                 : 
+WHILE                : 9 10
+error                : 
+
+Nonterminals, with rules where they appear
+
+addOp                : 23 24 30
+condition            : 8 9 10 11
+empty                : 12
+expression           : 14 14 24 36
+factor               : 29 30 31
+floatAssignmentList  : 2
+floatDecl            : 
+identList            : 
+intAssignmentList    : 1
+intDecl              : 0
+multOp               : 31
+relation             : 14
+statement            : 8 9 10 11 11 13
+stringAssignmentList : 3
+stringDecl           : 
+terms                : 22 23 24 30 31
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . intDecl
+    (1) intDecl -> . INT intAssignmentList
+
+    INT             shift and go to state 2
+
+    intDecl                        shift and go to state 1
+
+state 1
+
+    (0) S' -> intDecl .
+
+
+
+state 2
+
+    (1) intDecl -> INT . intAssignmentList
+    (4) intAssignmentList -> . ID ASSIGN INT SEMICOLON
+
+    ID              shift and go to state 4
+
+    intAssignmentList              shift and go to state 3
+
+state 3
+
+    (1) intDecl -> INT intAssignmentList .
+
+    $end            reduce using rule 1 (intDecl -> INT intAssignmentList .)
+
+
+state 4
+
+    (4) intAssignmentList -> ID . ASSIGN INT SEMICOLON
+
+    ASSIGN          shift and go to state 5
+
+
+state 5
+
+    (4) intAssignmentList -> ID ASSIGN . INT SEMICOLON
+
+    INT             shift and go to state 6
+
+
+state 6
+
+    (4) intAssignmentList -> ID ASSIGN INT . SEMICOLON
+
+    SEMICOLON       shift and go to state 7
+
+
+state 7
+
+    (4) intAssignmentList -> ID ASSIGN INT SEMICOLON .
+
+    $end            reduce using rule 4 (intAssignmentList -> ID ASSIGN INT SEMICOLON .)
+
