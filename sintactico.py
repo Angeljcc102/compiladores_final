@@ -1,3 +1,5 @@
+from semantico import *
+
 import ply.ply.yacc as yacc
 
 import codecs
@@ -22,6 +24,7 @@ precedence = (
 def p_intDecl(p):
     '''intDecl : INT intAssignmentList '''
     print("intDecl")
+    p[0] = intDecl(Int(p[1]), intAssignmentList(p[2]))
 
 
 def p_floatDecl(p):
@@ -46,6 +49,7 @@ def p_floatAssignmentList(p):
 
 def p_stringAssignmentList(p):
     '''stringAssignmentList : ID ASSIGN STRING SEMICOLON'''
+    print("stringAssignmentList")
 
 
 def p_identList(p):
@@ -234,6 +238,12 @@ filename.close()
 
 resultados = parser.parse(texto)
 
-newfile = codecs.open("lex.txt", "w", "utf-8")
+#resultados.printer(" ")
+# print(result.translate())
+
+
+newfile = codecs.open("tree.txt", "w", "utf-8")
+newfile.wirte(resultados.translate())
+newfile.close()
 
 print(resultados)
