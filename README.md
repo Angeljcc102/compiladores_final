@@ -16,6 +16,8 @@ genera un archivo parser.out
 
 \*Nota : Tiene errores de implementación
 
+- Union con analizador semantico, faltan erorres semantico -
+
 # Analizador semantico
 
-**_ En progreso _**
+- Version escrita, errores de implementación -
