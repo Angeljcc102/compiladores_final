@@ -6,13 +6,15 @@ import sys
 
 tokens = ['ID', 'PLUS', 'MINUS', 'TIMES', 'DIVIDE', 'EXP', 'ASSIGN', 'EQUALS', 'NE', 'GT',
           'LT', 'GE', 'LE', 'LPAREN', 'RPAREN', 'LBRACE', 'RBRACE', 'SEMICOLON',
-          'INT', 'FLOAT', 'STRING', 'BOOL', 'IF', 'ELSE', 'ELIF', 'WHILE', 'DO', 'FOR', 'TRUE', 'FALSE']
+          'INT', 'FLOAT', 'STRING', 'BOOL', 'OR', 'AND', 'IF', 'ELSE', 'ELIF', 'WHILE', 'DO', 'FOR', 'TRUE', 'FALSE']
 
 reserved = {
     'int': 'INT',
     'float': 'FLOAT',
     'string': 'STRING',
     'bool': 'BOOL',
+    'or': 'OR',
+    'and': 'AND',
     'if': 'IF',
     'else': 'ELSE',
     'elif': 'ELIF',
